@@ -1,0 +1,25 @@
+<body>
+  <div class="container">
+    <div class="header box">For Authenticated User Eyes Only</div>
+    <div class="content box">
+      <p>Welcome to the site {{ profileData?.username }}</p>
+      <div style="width: 70%">
+        <div class="image">
+          <img
+            height="300px"
+            width="300px"
+            [src]="sanitize(imageUrl?.changingThisBreaksApplicationSecurity)"
+          /><br /><br />
+        </div>
+        <div class="text">
+          <h3>FirstName: {{ profileData?.givenName }}</h3>
+          <h3>LastName: {{ profileData?.surname }}</h3>
+          <h3>Email: {{ profileData?.mail }}</h3>
+          <h3>Mobile Phone: {{ profileData?.mobilePhone }}</h3>
+          <h3>Office Location: {{ profileData?.officeLocation }}</h3>
+          <h3>Preferred Language: {{ profileData?.preferredLanguage }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

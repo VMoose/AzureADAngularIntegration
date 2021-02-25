@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Quiz</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div
+    *ngIf="isLoggedIn"
+    class="collapse navbar-collapse"
+    id="navbarSupportedContent"
+  >
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"
+          >Home <span class="sr-only">(current)</span></a
+        >
+      </li>
+    </ul>
+    <ul class="navbar-nav btn-nav">
+      <li class="nav-item active">
+        <a class="nav-link" (click)="logout()"
+          ><img
+            class="bcgColor"
+            src="https://www.flaticon.com/svg/vstatic/svg/23/23171.svg?token=exp=1614192372~hmac=cd4d5934ac59527ad5edc2806f47167a"
+          />
+          Logout</a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>

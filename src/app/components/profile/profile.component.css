@@ -1,0 +1,36 @@
+html {
+  font-family: OpenSans, sans-serif;
+  color: #fff;
+}
+body {
+  background: #02b3e4;
+}
+.container {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-areas:
+    "hd hd hd"
+    "main main main"
+    "ft ft ft";
+  text-align: center;
+}
+.header {
+  grid-area: hd;
+  font-size: 32px;
+}
+.footer {
+  grid-area: ft;
+}
+.content {
+  grid-area: main;
+}
+
+.image {
+  float: left;
+}
+
+.text {
+  float: right;
+  text-align: left;
+  margin-right: 2%;
+}

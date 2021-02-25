@@ -1,0 +1,12 @@
+<app-header [isLoggedIn]="loggedIn" (signOut)="logout($event)"></app-header>
+<div *ngIf="!loggedIn">
+  <app-login
+    (isSignUp)="showSignup($event)"
+    (isAuthenticated)="checkAccount($event)"
+    *ngIf="isLogin"
+  ></app-login>
+  <app-signup (isSignUp)="showSignup($event)" *ngIf="!isLogin"></app-signup>
+</div>
+<div *ngIf="loggedIn">
+  <app-profile></app-profile>
+</div>
