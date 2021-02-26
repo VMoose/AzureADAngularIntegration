@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
-import { GraphService } from "src/app/services/graph.service";
-import { Profile } from "src/app/services/Profile";
+import { GraphService } from "src/app/services/GraphService/graph.service";
+import { Profile } from "src/app/services/GraphService/Profile";
 
 @Component({
   selector: "app-profile",

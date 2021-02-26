@@ -39,8 +39,9 @@ const isIE =
     MsalModule.forRoot(
       {
         auth: {
-          clientId: "", // add client ID here
-          authority: "https://login.microsoftonline.com/", //Append tenant id here
+          clientId: "782497b4-3247-4c80-b376-58506a5ea92c", // add client ID here
+          authority:
+            "https://login.microsoftonline.com/87d48a00-488d-4d48-96d3-0f329b69fe49", //Append tenant id here
           redirectUri: "http://localhost:4200/getToken",
           postLogoutRedirectUri: "https://localhost:4200",
         },
