@@ -7,7 +7,3 @@ export class Profile {
   officeLocation: string;
   preferredLanguage: string;
 }
-
-export class GraphResponse {
-  value?: any[];
-}

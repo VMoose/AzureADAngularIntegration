@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
 import { MsalService } from "@azure/msal-angular";
-import { Profile, GraphResponse } from "./Profile";
+import { Profile } from "./Profile";
 
 @Injectable({
   providedIn: "root",
