@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { FormControl, FormGroup } from "@angular/forms";
 import { MsalService, BroadcastService } from "@azure/msal-angular";
+import { LoginService } from "src/app/services/LoginService/login.service";
 
 @Component({
   selector: "app-login",
@@ -12,10 +14,15 @@ export class LoginComponent implements OnInit {
   requestObj = {
     scopes: ["user.read"],
   };
+  profileForm = new FormGroup({
+    UserName: new FormControl(""),
+    Password: new FormControl(""),
+  });
 
   constructor(
     private broadcastService: BroadcastService,
-    private authService: MsalService
+    private authService: MsalService,
+    private loginService: LoginService
   ) {}
 
   ngOnInit() {}
@@ -40,5 +47,16 @@ export class LoginComponent implements OnInit {
     if (result && this.authService.getAccount()) {
       this.isAuthenticated.emit(true);
     }
+  }
+
+  onSubmit(submitBtn: HTMLButtonElement) {
+    submitBtn.disabled = true;
+    this.loginService.Login(this.profileForm.value).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      (err) => {}
+    );
+    submitBtn.disabled = false;
   }
 }

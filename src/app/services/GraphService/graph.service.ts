@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
 import { MsalService } from "@azure/msal-angular";
+import { AuthenticationParameters } from "msal";
 import { Profile } from "./Profile";
 
 @Injectable({
@@ -9,7 +10,7 @@ import { Profile } from "./Profile";
 })
 export class GraphService {
   resourceUri = "https://graph.microsoft.com/";
-  accessTokenRequest = {
+  accessTokenRequest: AuthenticationParameters = {
     scopes: ["user.read"],
   };
   profileImg: any;
