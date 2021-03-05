@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
 import { GraphService } from "src/app/services/GraphService/graph.service";
 import { Profile } from "src/app/services/GraphService/Profile";
@@ -9,6 +9,7 @@ import { Profile } from "src/app/services/GraphService/Profile";
   styleUrls: ["./profile.component.css"],
 })
 export class ProfileComponent implements OnInit {
+  @Input() username: string;
   profileData: Profile;
   imageUrl;
   constructor(
@@ -17,8 +18,10 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    this.profileData = await this.graphService.getprofileData();
-    this.imageUrl = await this.graphService.getProfilePhoto();
+    if (this.username == "") {
+      this.profileData = await this.graphService.getprofileData();
+      this.imageUrl = await this.graphService.getProfilePhoto();
+    }
   }
 
   sanitize(url: string) {

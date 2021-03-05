@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MsalService } from "@azure/msal-angular";
+import { LoginService } from "./services/LoginService/login.service";
 
 @Component({
   selector: "app-root",
@@ -7,14 +8,22 @@ import { MsalService } from "@azure/msal-angular";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent implements OnInit {
-  constructor(private authService: MsalService) {}
+  constructor(
+    private authService: MsalService,
+    private loginService: LoginService
+  ) {}
 
   title = "quizUI";
   isLogin: boolean = true;
+  username: string;
   loggedIn: boolean;
 
   ngOnInit(): void {
     this.loggedIn = !!this.authService.getAccount();
+    this.loginService.checkAccount().subscribe((s) => {
+      this.loggedIn = this.loggedIn || s[0];
+      this.username = s[1];
+    });
   }
 
   public showSignup(val: boolean): void {
@@ -26,6 +35,16 @@ export class AppComponent implements OnInit {
   }
 
   logout(val: boolean): void {
-    this.authService.logout();
+    if (!!this.authService.getAccount()) {
+      this.authService.logout();
+    } else {
+      this.loginService.logout().subscribe((s) => {
+        this.loggedIn = !s;
+      });
+    }
+  }
+
+  getLoginData(val: string): void {
+    this.username = val;
   }
 }

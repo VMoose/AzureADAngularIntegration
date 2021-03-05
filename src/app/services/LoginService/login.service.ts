@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import { Login } from "./Login";
 
 @Injectable({
@@ -12,5 +13,13 @@ export class LoginService {
 
   Login(loginData: Login) {
     return this.http.post(this.baseUrl + "/login", loginData);
+  }
+
+  checkAccount(): Observable<object> {
+    return this.http.get<object>(this.baseUrl + "/getAccount");
+  }
+
+  logout() {
+    return this.http.get<boolean>(this.baseUrl + "/logout");
   }
 }

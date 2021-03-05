@@ -2,8 +2,8 @@
   <div class="container">
     <div class="header box">For Authenticated User Eyes Only</div>
     <div class="content box">
-      <p>Welcome to the site {{ profileData?.username }}</p>
-      <div style="width: 70%">
+      <p>Welcome to the site {{ profileData?.username || username }}</p>
+      <div style="width: 70%" *ngIf="!username">
         <div class="image">
           <img
             height="300px"

@@ -10,9 +10,9 @@
     <div class="container">
       <div class="form">
         <h2>SIGN UP</h2>
-        <form action="">
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit(submitBtn)">
           <div class="inputBx">
-            <input type="text" required="required" />
+            <input type="text" required="required" formControlName="UserName" />
             <span>User Name</span>
             <img
               src="https://www.flaticon.com/svg/static/icons/svg/709/709699.svg"
@@ -25,6 +25,7 @@
               type="password"
               name="password"
               required="required"
+              formControlName="Password"
             />
             <span>Password</span>
             <img
@@ -33,7 +34,7 @@
             />
           </div>
           <div class="inputBx password">
-            <input type="text" required="required" />
+            <input type="text" required="required" formControlName="Email" />
             <span>Email</span>
             <img
               src="https://www.flaticon.com/svg/vstatic/svg/561/561127.svg?token=exp=1613760284~hmac=5eb37c7956a85cda7d5c7bafd0879ca8"
@@ -41,9 +42,15 @@
             />
           </div>
           <div class="inputBx">
-            <input type="submit" value="Sign Up" disabled />
+            <input
+              type="submit"
+              value="Sign Up"
+              #submitBtn
+              [disabled]="!profileForm.valid"
+            />
           </div>
         </form>
+        <p class="errorMessage">{{ errorMessage }}</p>
         <p>Have an account already?<a (click)="showLogIn()"> Log In</a></p>
       </div>
     </div>

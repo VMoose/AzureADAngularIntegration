@@ -3,10 +3,11 @@
   <app-login
     (isSignUp)="showSignup($event)"
     (isAuthenticated)="checkAccount($event)"
+    (loginData)="getLoginData($event)"
     *ngIf="isLogin"
   ></app-login>
   <app-signup (isSignUp)="showSignup($event)" *ngIf="!isLogin"></app-signup>
 </div>
 <div *ngIf="loggedIn">
-  <app-profile></app-profile>
+  <app-profile [username]="username"></app-profile>
 </div>
